@@ -1,0 +1,15 @@
+[
+    {
+        "id": 1001,
+        "name": "Tuborg",
+        "category": "Beer",
+        "isFavorite": true,
+    },
+    {
+        "id": 1002,
+        "name": "Somersby",
+        "category": "Cider",
+        "isFavorite": false,
+    }
+]
+
