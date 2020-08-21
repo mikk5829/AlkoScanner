@@ -15,27 +15,31 @@ struct OverView: View {
     @State var testSheet = true
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Text(String(format: "%.2f", userData.currentBac))
-                    .font(Font.custom("Gill-sans-light", size: 90.0))
-                Spacer()
-                HStack {
-                    Button(action: {self.openBarcodeView.toggle()}) {
-                        Image(systemName: "barcode.viewfinder")
-                            .imageScale(.large)
+        Group {
+            if self.userData.shouldViewOnboarding {
+                Onboarding().environmentObject(UserData())
+            } else {
+                NavigationView {
+                    VStack {
+                        Text(String(format: "%.2f", userData.currentBac))
+                            .font(Font.custom("Gill-sans-light", size: 90.0))
+                        Spacer()
+                        HStack {
+                            Button(action: {self.openBarcodeView.toggle()}) {
+                                Image(systemName: "barcode.viewfinder")
+                                    .imageScale(.large)
+                            }
+                            Spacer()
+                            NavigationLink(destination: DrinkList()){
+                                Image(systemName: "list.dash")
+                                .imageScale(.large)
+                            }
+                        }.padding()
+                        }.navigationBarTitle(Text("Overview")).sheet(isPresented: $openBarcodeView) {
+                        ScanBarcode()
                     }
-                    Spacer()
-                    NavigationLink(destination: DrinkList()){
-                        Image(systemName: "list.dash")
-                        .imageScale(.large)
-                    }
-                }.padding()
-                }.navigationBarTitle(Text("Overview")).sheet(isPresented: $openBarcodeView) {
-                ScanBarcode()
+                }
             }
-        }.sheet(isPresented: $userData.shouldViewOnboarding) {
-            Onboarding().environmentObject(UserData())
         }
     }
 }
