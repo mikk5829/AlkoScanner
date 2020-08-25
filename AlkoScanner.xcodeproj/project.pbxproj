@@ -14,7 +14,6 @@
 		1939CFE624F060F9000ADFB2 /* ProfileDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1939CFE524F060F9000ADFB2 /* ProfileDataStore.swift */; };
 		19F9648824EB28A6002463C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F9648724EB28A6002463C0 /* AppDelegate.swift */; };
 		19F9648A24EB28A6002463C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F9648924EB28A6002463C0 /* SceneDelegate.swift */; };
-		19F9648C24EB28A6002463C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F9648B24EB28A6002463C0 /* ContentView.swift */; };
 		19F9648E24EB28A8002463C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F9648D24EB28A8002463C0 /* Assets.xcassets */; };
 		19F9649124EB28A8002463C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F9649024EB28A8002463C0 /* Preview Assets.xcassets */; };
 		19F9649424EB28A8002463C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F9649224EB28A8002463C0 /* LaunchScreen.storyboard */; };
@@ -41,7 +40,6 @@
 		19F9648424EB28A6002463C0 /* AlkoScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlkoScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F9648724EB28A6002463C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19F9648924EB28A6002463C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		19F9648B24EB28A6002463C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		19F9648D24EB28A8002463C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19F9649024EB28A8002463C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		19F9649324EB28A8002463C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 				19F9649B24EB28CB002463C0 /* Models */,
 				19F9648724EB28A6002463C0 /* AppDelegate.swift */,
 				19F9648924EB28A6002463C0 /* SceneDelegate.swift */,
-				19F9648B24EB28A6002463C0 /* ContentView.swift */,
 				19F9648D24EB28A8002463C0 /* Assets.xcassets */,
 				19F9649224EB28A8002463C0 /* LaunchScreen.storyboard */,
 				19F9649524EB28A8002463C0 /* Info.plist */,
@@ -267,7 +264,6 @@
 				19F964B324EC5D39002463C0 /* Onboarding.swift in Sources */,
 				19F9648A24EB28A6002463C0 /* SceneDelegate.swift in Sources */,
 				19F9649F24EBC213002463C0 /* UserData.swift in Sources */,
-				19F9648C24EB28A6002463C0 /* ContentView.swift in Sources */,
 				19F964A824EC1B16002463C0 /* DrinkDetail.swift in Sources */,
 				19F964B124EC4A4D002463C0 /* ScanBarcode.swift in Sources */,
 				1939CFDF24F058CA000ADFB2 /* UserHealthProfile.swift in Sources */,

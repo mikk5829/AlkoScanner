@@ -42,7 +42,6 @@ struct OverView: View {
                         Spacer()
                         HStack {
                             Button(action: {
-                                self.updateHealth()
                                 self.openBarcodeView.toggle()}) {
                                 Image(systemName: "barcode.viewfinder")
                                     .imageScale(.large).foregroundColor(Color.white)
