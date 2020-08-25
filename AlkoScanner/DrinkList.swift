@@ -13,18 +13,25 @@ struct DrinkList: View {
     @State var showingAddDrink = true
 
     var body: some View {
-        
-            VStack {
-                List {
-                    ForEach(userData.drinks) { drink in
-                        NavigationLink(destination: DrinkDetail(drink: drink)) {
-                            DrinkRow(drink: drink)
-                        }
+        VStack {
+            List {
+                ForEach(userData.drinks) { drink in
+                    NavigationLink(destination: DrinkDetail(drink: drink)) {
+                        DrinkRow(drink: drink)
                     }
                 }
-                .navigationBarTitle(Text("Drinks"), displayMode: .inline)
             }
-        
+            .navigationBarTitle(Text("Drinks"), displayMode: .inline)
+            HStack {
+                Spacer()
+                Button(action: {}) {
+                    Text("Add drink")
+                        .fontWeight(.bold)
+                    Image(systemName: "plus.circle")
+                        .imageScale(.large)
+                }
+            }.padding()
+        }
     }
 }
 
