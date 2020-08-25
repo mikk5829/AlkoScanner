@@ -4,12 +4,14 @@
         "name": "Tuborg",
         "category": "Beer",
         "isFavorite": true,
+        "originalBac": 0.15
     },
     {
         "id": 1002,
         "name": "Somersby",
         "category": "Cider",
         "isFavorite": false,
+        "originalBac": 0.25
     }
 ]
 

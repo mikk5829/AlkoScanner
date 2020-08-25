@@ -10,14 +10,12 @@ import Combine
 import SwiftUI
 import HealthKit
 
+/// Model for storing session data, ObservableObject updates every view it is linked to, when changes occur.
 class UserData: ObservableObject {
     @Published var showFavoritesOnly = false
     @Published var drinks = drinkData
     @Published var shouldViewOnboarding = true
-    @Published var currentBac = 0.13
-    @Published var bodyMass = 50
-    
-    
+    @Published var currentBac = 0.00
 }
 
 //func getBiologicalSex() throws -> (HKBiologicalSex) {

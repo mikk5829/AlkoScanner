@@ -13,6 +13,9 @@ struct Drink: Hashable, Codable, Identifiable {
     var name: String
     var category: Category
     var isFavorite: Bool
+    /// Used when deleting drink, subtract number from BAC
+    var originalBac: Float
+//    var timeFinished: Date
     
     enum Category: String, CaseIterable, Codable, Hashable {
         case beer = "Beer"
