@@ -26,10 +26,10 @@ struct ScanBarcode_Previews: PreviewProvider {
 struct GradientBackgroundStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .frame(minWidth: 0, maxWidth: 300)
+            .frame(minWidth: 0, maxWidth: 300, minHeight: 35)
             .padding()
-            .background(Color.orange)
-            .foregroundColor(Color.white)
-            .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
+            .background(Color.white)
+            .foregroundColor(Color("GreenDark"))
+            .cornerRadius(35)
     }
 }

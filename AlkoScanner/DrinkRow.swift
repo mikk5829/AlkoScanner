@@ -23,10 +23,10 @@ struct DrinkRow: View {
             }
             Spacer()
             
-            if drink.isFavorite {
-                Image(systemName: "star.fill")
-                    .imageScale(.medium).foregroundColor(.yellow)
-            }
+//            if drink.isFavorite {
+//                Image(systemName: "star.fill")
+//                    .imageScale(.medium).foregroundColor(.yellow)
+//            }
         }
     }
 }
