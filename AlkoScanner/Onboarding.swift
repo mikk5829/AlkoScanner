@@ -12,11 +12,34 @@ import HealthKitUI
 
 struct Onboarding: View {
     @EnvironmentObject var userData: UserData
+    
     private var distanceBetweenText: CGFloat = 19.0
+    
+    let defaults = UserDefaults.standard
+    
+    public func authorize() {
+        HealthKitSetupAssistant.authorizeHealthKit { (authorized, error) in
+            
+            guard authorized else {
+                
+                let baseMessage = "HealthKit Authorization Failed"
+                
+                if let error = error {
+                    print("\(baseMessage). Reason: \(error.localizedDescription)")
+                } else {
+                    print(baseMessage)
+                }
+                
+                return
+            }
+            self.defaults.set(true, forKey: "ShouldViewOnboarding")
+            print("HealthKit Successfully Authorized.")
+        }
+    }
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("Background"), Color("BackgroundDark")]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [Color("Green"), Color("GreenDark")]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Spacer()
@@ -30,38 +53,20 @@ struct Onboarding: View {
                 }.font(.largeTitle)
                     Spacer()
                         .frame(height: distanceBetweenText)
-                    Text("Using AlcoScanner with the Apple Healt app on your iPhone empowers you to better manage your health. You will get an overview of all your health data including data from AlcoScanner, so you can track habits in one convenient place.").font(.headline).fontWeight(.regular).foregroundColor(Color.white).padding(.trailing, 30.0)
+                    Text("Using AlkoScanner with the Apple Health app on your iPhone empowers you to better manage your health. You will get an overview of all your health data including data from AlkoScanner, so you can track health habits in one convenient place.").font(.headline).fontWeight(.regular).foregroundColor(Color.white).padding(.trailing, 30.0)
                 }
                 Spacer()
-                Button(action: { HealthKitSetupAssistant.authorizeHealthKit { (authorized, error) in
-                      
-                  guard authorized else {
-                        
-                    let baseMessage = "HealthKit Authorization Failed"
-                        
-                    if let error = error {
-                      print("\(baseMessage). Reason: \(error.localizedDescription)")
-                    } else {
-                      print(baseMessage)
-                    }
-                        
-                    return
-                  }
-                      
-                  print("HealthKit Successfully Authorized.")
-                }
+                Button(action: { self.authorize()
 
                 }) {
                     Text("Sync Health Data")
                         .font(.title)
-                        .fontWeight(.semibold)
-                }.buttonStyle(GradientBackgroundStyle()).shadow(radius: 3)
+                        .fontWeight(.bold)
+                    }.buttonStyle(GradientBackgroundStyle()).shadow(radius: 3)
                 Spacer()
                     .frame(height: distanceBetweenText)
                 Button(action: {
-                   
-                    self.userData.shouldViewOnboarding = false
-                    print(self.userData.shouldViewOnboarding)
+                    self.defaults.set(true, forKey: "ShouldViewOnboarding")
                 }) {
                     Text("Enter manually")
                         .font(.headline)

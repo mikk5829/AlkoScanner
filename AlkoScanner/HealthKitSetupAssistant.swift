@@ -42,8 +42,4 @@ class HealthKitSetupAssistant {
           completion(success, error)
         }
     }
-    
-    
-
-
 }

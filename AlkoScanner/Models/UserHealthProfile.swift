@@ -9,7 +9,6 @@
 import HealthKit
 
 class UserHealthProfile {
-  
   var biologicalSex: HKBiologicalSex?
   var weightInKilograms: Double?
 }

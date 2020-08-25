@@ -8,11 +8,12 @@
 
 import UIKit
 import SwiftUI
+import HealthKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    @EnvironmentObject var userData: UserData
+//    @EnvironmentObject var userData: UserData
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -22,12 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         
-        let overView = OverView()
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: overView.environmentObject(UserData()))
+            window.rootViewController = UIHostingController(rootView: OverView().environmentObject(UserData()))
             self.window = window
             window.makeKeyAndVisible()
         }

@@ -29,7 +29,7 @@ struct GradientBackgroundStyle: ButtonStyle {
             .frame(minWidth: 0, maxWidth: 300, minHeight: 35)
             .padding()
             .background(Color.white)
-            .foregroundColor(Color("BackgroundDark"))
+            .foregroundColor(Color("GreenDark"))
             .cornerRadius(35)
     }
 }
