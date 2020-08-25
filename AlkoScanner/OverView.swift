@@ -19,6 +19,7 @@ struct OverView: View {
     @State var testSheet = true
     
     @State var biologicalSexLabel:Text!
+    @State var bodyMassText:Text!
     
     func isHealthAuthorized() -> Bool {
         return defaults.bool(forKey: "ShouldViewOnboarding")
@@ -27,6 +28,9 @@ struct OverView: View {
     func updateLabels() {
         if let biologicalSex = userHealthProfile.biologicalSex {
             biologicalSexLabel = Text(biologicalSex.stringRepresentation)
+        }
+        if let bodyMass = userHealthProfile.weightInKilograms {
+            bodyMassText = Text(String(format: "%.2f", bodyMass))
         }
     }
     
@@ -40,6 +44,29 @@ struct OverView: View {
         }
     }
     
+    private func updateBodyMass() {
+        guard let weightSampleType = HKSampleType.quantityType(forIdentifier: .bodyMass) else {
+          print("Body Mass Sample Type is no longer available in HealthKit")
+          return
+        }
+            
+        ProfileDataStore.getMostRecentSample(for: weightSampleType) { (sample, error) in
+              
+          guard let sample = sample else {
+                
+//            if let error = error {
+//              self.displayAlert(for: error)
+//            }
+            return
+          }
+              
+          let weightInKilograms = sample.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
+          self.userHealthProfile.weightInKilograms = weightInKilograms
+          self.updateLabels()
+        }
+
+    }
+    
     var body: some View {
         Group {
             if !isHealthAuthorized() {
@@ -51,6 +78,7 @@ struct OverView: View {
                             .edgesIgnoringSafeArea(.all)
                     VStack {
                         biologicalSexLabel
+                        bodyMassText
                         Text(String(format: "%.2f", userData.currentBac) + "‰")
                             .font(Font.custom("Avenir-Roman", size: 90.0))
                             .foregroundColor(Color.white)
@@ -59,6 +87,7 @@ struct OverView: View {
                         HStack {
                             Button(action: {
                                 self.updateBiologicalSex()
+                                self.updateBodyMass()
                                 self.openBarcodeView.toggle()}) {
                                 Image(systemName: "barcode.viewfinder")
                                     .imageScale(.large).foregroundColor(Color.white)
