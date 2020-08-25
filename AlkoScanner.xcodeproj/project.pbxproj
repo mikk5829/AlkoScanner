@@ -87,6 +87,24 @@
 			path = "Health Helpers";
 			sourceTree = "<group>";
 		};
+		1939CFEC24F5ACF3000ADFB2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1939CFDC24EFF716000ADFB2 /* HealthKitSetupAssistant.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1939CFED24F5AD06000ADFB2 /* Drink View */ = {
+			isa = PBXGroup;
+			children = (
+				19F964A024EBC2DF002463C0 /* DrinkRow.swift */,
+				19F964A724EC1B16002463C0 /* DrinkDetail.swift */,
+				19F964AC24EC254E002463C0 /* DrinkList.swift */,
+			);
+			path = "Drink View";
+			sourceTree = "<group>";
+		};
 		19F9647B24EB28A6002463C0 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +125,8 @@
 		19F9648624EB28A6002463C0 /* AlkoScanner */ = {
 			isa = PBXGroup;
 			children = (
+				1939CFED24F5AD06000ADFB2 /* Drink View */,
+				1939CFEC24F5ACF3000ADFB2 /* Controllers */,
 				1939CFE024F058FF000ADFB2 /* Health Helpers */,
 				1939CFD524EFF3B6000ADFB2 /* AlkoScanner.entitlements */,
 				19F964A924EC1BBB002463C0 /* Supporting Views */,
@@ -119,14 +139,8 @@
 				19F9649224EB28A8002463C0 /* LaunchScreen.storyboard */,
 				19F9649524EB28A8002463C0 /* Info.plist */,
 				19F9648F24EB28A8002463C0 /* Preview Content */,
-				19F9649E24EBC213002463C0 /* UserData.swift */,
-				19F964A024EBC2DF002463C0 /* DrinkRow.swift */,
-				19F964A724EC1B16002463C0 /* DrinkDetail.swift */,
-				19F964AC24EC254E002463C0 /* DrinkList.swift */,
 				19F964AE24EC4979002463C0 /* OverView.swift */,
 				19F964B224EC5D38002463C0 /* Onboarding.swift */,
-				1939CFDC24EFF716000ADFB2 /* HealthKitSetupAssistant.swift */,
-				1939CFE524F060F9000ADFB2 /* ProfileDataStore.swift */,
 			);
 			path = AlkoScanner;
 			sourceTree = "<group>";
@@ -142,6 +156,8 @@
 		19F9649B24EB28CB002463C0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				19F9649E24EBC213002463C0 /* UserData.swift */,
+				1939CFE524F060F9000ADFB2 /* ProfileDataStore.swift */,
 				19F9649C24EB29A3002463C0 /* Drink.swift */,
 				19F964A524EBC41E002463C0 /* Data.swift */,
 				1939CFDE24F058C9000ADFB2 /* UserHealthProfile.swift */,

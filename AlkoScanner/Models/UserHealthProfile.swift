@@ -8,6 +8,7 @@
 
 import HealthKit
 
+/// Model for storing healt information about the user
 class UserHealthProfile {
   var biologicalSex: HKBiologicalSex?
   var weightInKilograms: Double?
