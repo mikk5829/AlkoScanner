@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DrinkList: View {
     @EnvironmentObject var userData: UserData
-    @State var showingAddDrink = true
+    @State var showingAddDrink = false
 
     var body: some View {
         VStack {
@@ -24,13 +24,17 @@ struct DrinkList: View {
             .navigationBarTitle(Text("Drinks"), displayMode: .inline)
             HStack {
                 Spacer()
-                Button(action: {}) {
+                Button(action: {
+                    self.showingAddDrink = true
+                }) {
                     Text("Add drink")
                         .fontWeight(.bold)
                     Image(systemName: "plus.circle")
                         .imageScale(.large)
                 }
             }.padding()
+        }.sheet(isPresented: $showingAddDrink) {
+            AddDrink().environmentObject(self.userData)
         }
     }
 }

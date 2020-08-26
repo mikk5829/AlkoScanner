@@ -32,6 +32,9 @@ struct Onboarding: View {
                 
                 return
             }
+            DispatchQueue.main.async {
+                self.userData.shouldViewOnboarding = false
+            }
             self.defaults.set(true, forKey: "ShouldViewOnboarding")
             print("HealthKit Successfully Authorized.")
         }
@@ -56,8 +59,9 @@ struct Onboarding: View {
                     Text("Using AlkoScanner with the Apple Health app on your iPhone empowers you to better manage your health. You will get an overview of all your health data including data from AlkoScanner, so you can track health habits in one convenient place.").font(.headline).fontWeight(.regular).foregroundColor(Color.white).padding(.trailing, 30.0)
                 }
                 Spacer()
-                Button(action: { self.authorize()
-
+                Button(action: {
+                    self.authorize()
+                    self.defaults.set(true, forKey: "ShouldViewOnboarding")
                 }) {
                     Text("Sync Health Data")
                         .font(.title)
@@ -66,6 +70,9 @@ struct Onboarding: View {
                 Spacer()
                     .frame(height: distanceBetweenText)
                 Button(action: {
+                    DispatchQueue.main.async {
+                        self.userData.shouldViewOnboarding = false
+                    }
                     self.defaults.set(true, forKey: "ShouldViewOnboarding")
                 }) {
                     Text("Enter manually")

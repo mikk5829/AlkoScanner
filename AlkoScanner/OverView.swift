@@ -11,21 +11,21 @@ import HealthKit
 
 struct OverView: View {
     @EnvironmentObject var userData: UserData
+    
     let defaults = UserDefaults.standard
     let userHealthProfile = UserHealthProfile()
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @State var testAction = false
     @State var openBarcodeView = false
     @State var testSheet = true
-    
     @State var biologicalSexLabel:Text!
     @State var bodyMassText:Text!
     
-    
-    
     var body: some View {
         Group {
-            if !isHealthAuthorized() {
+            if !isHealthAuthorized() || self.userData.shouldViewOnboarding {
                 Onboarding().environmentObject(userData)
             } else {
                 NavigationView {
@@ -38,7 +38,9 @@ struct OverView: View {
                         Text(String(format: "%.2f", userData.currentBac) + "‰")
                             .font(Font.custom("Avenir-Roman", size: 90.0))
                             .foregroundColor(Color.white)
-                            .shadow(radius: 6)
+                            .shadow(radius: 6).onReceive(timer) { _ in
+                                self.userData.currentBac -= 0.01
+                        }
                         Spacer()
                         HStack {
                             Button(action: {
@@ -54,11 +56,11 @@ struct OverView: View {
                             }
                         }.padding()
                         }.navigationBarTitle(Text("Overview")).sheet(isPresented: $openBarcodeView) {
-                        ScanBarcode()
+                            ScanBarcode().environmentObject(self.userData)
                         }
                         
                     }
-                }.onAppear{
+                    }.onAppear{
                     self.updateHealth()
                 }
             }
@@ -67,6 +69,12 @@ struct OverView: View {
 }
 
 extension OverView {
+    
+    func decrementBac() {
+        self.userData.currentBac -= 0.01
+    }
+    
+    
     func isHealthAuthorized() -> Bool {
         return defaults.bool(forKey: "ShouldViewOnboarding")
     }
@@ -89,6 +97,7 @@ extension OverView {
         do {
             let userAgeSexAndBloodType = try ProfileDataStore.getbiologicalSex()
             userHealthProfile.biologicalSex = userAgeSexAndBloodType
+            self.userData.biologicalSex = userAgeSexAndBloodType
             updateLabels()
         } catch let error {
             print(error)
@@ -113,6 +122,7 @@ extension OverView {
             
             let weightInKilograms = sample.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
             self.userHealthProfile.weightInKilograms = weightInKilograms
+            self.userData.weightInKilograms = weightInKilograms
             self.updateLabels()
         }
         
@@ -121,6 +131,9 @@ extension OverView {
 
 struct OverView_Previews: PreviewProvider {
     static var previews: some View {
-        OverView().environmentObject(UserData())
+        Group {
+            OverView().environmentObject(UserData()).previewDevice("iPhone 11 Pro")
+            OverView().environmentObject(UserData()).previewDevice("iPhone SE (2nd generation)")
+        }
     }
 }

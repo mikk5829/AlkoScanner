@@ -5,7 +5,7 @@
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Update description UPDATE</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Share description UPDATE</string>
+	<string>AlkoScanner uses your Health data to automatically update weight and biological sex for the most accurate BAC calculation.</string>
 	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
 	<string>Usage description UPDATE</string>
 	<key>CFBundleDevelopmentRegion</key>

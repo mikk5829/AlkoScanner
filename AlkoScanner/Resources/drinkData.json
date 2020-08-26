@@ -4,14 +4,18 @@
         "name": "Tuborg",
         "category": "Beer",
         "isFavorite": true,
-        "originalBac": 0.15
+        "originalBac": 0.15,
+        "volumeInMl": 330,
+        "alcoholPercent": 4.5
     },
     {
         "id": 1002,
         "name": "Somersby",
         "category": "Cider",
         "isFavorite": false,
-        "originalBac": 0.25
+        "originalBac": 0.25,
+        "volumeInMl": 350,
+        "alcoholPercent": 5.5
     }
 ]
 

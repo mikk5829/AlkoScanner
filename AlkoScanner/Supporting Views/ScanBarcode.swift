@@ -9,11 +9,21 @@
 import SwiftUI
 
 struct ScanBarcode: View {
+    @EnvironmentObject var userData: UserData
     var body: some View {
         
-        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-            Text("Add drink")
-        }.buttonStyle(GradientBackgroundStyle())
+        ZStack {
+            Color("GreenDark")
+            VStack {
+                Spacer()
+                Button(action: {
+                    self.userData.currentBac += 0.15
+                }) {
+                    Text("Add drink").font(.title)
+                        .fontWeight(.bold)
+                }.buttonStyle(GradientBackgroundStyle()).shadow(radius: 3)
+            }.padding(.vertical, 30.0)
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 

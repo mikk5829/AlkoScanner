@@ -12,10 +12,14 @@ import HealthKit
 
 /// Model for storing session data, ObservableObject updates every view it is linked to, when changes occur.
 class UserData: ObservableObject {
+    let defaults = UserDefaults.standard
+    
     @Published var showFavoritesOnly = false
     @Published var drinks = drinkData
-    @Published var shouldViewOnboarding = true
-    @Published var currentBac = 0.00
+    @Published var shouldViewOnboarding = false
+    @Published var currentBac = 0.15
+    @Published var weightInKilograms = 0.0
+    @Published var biologicalSex = HKBiologicalSex.male
 }
 
 //func getBiologicalSex() throws -> (HKBiologicalSex) {
