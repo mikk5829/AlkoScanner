@@ -20,6 +20,7 @@ class UserData: ObservableObject {
     @Published var currentBac = 0.15
     @Published var weightInKilograms = 0.0
     @Published var biologicalSex = HKBiologicalSex.male
+    @Published var currentDrinks:[Drink] = []
 }
 
 //func getBiologicalSex() throws -> (HKBiologicalSex) {

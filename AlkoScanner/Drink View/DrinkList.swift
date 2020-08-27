@@ -15,7 +15,7 @@ struct DrinkList: View {
     var body: some View {
         VStack {
             List {
-                ForEach(userData.drinks) { drink in
+                ForEach(userData.currentDrinks) { drink in
                     NavigationLink(destination: DrinkDetail(drink: drink)) {
                         DrinkRow(drink: drink)
                     }

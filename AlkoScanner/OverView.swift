@@ -11,11 +11,10 @@ import HealthKit
 
 struct OverView: View {
     @EnvironmentObject var userData: UserData
+    @ObservedObject var stopWatchManager = StopWatchManager()
     
     let defaults = UserDefaults.standard
     let userHealthProfile = UserHealthProfile()
-    
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @State var testAction = false
     @State var openBarcodeView = false
@@ -38,12 +37,11 @@ struct OverView: View {
                         Text(String(format: "%.2f", userData.currentBac) + "‰")
                             .font(Font.custom("Avenir-Roman", size: 90.0))
                             .foregroundColor(Color.white)
-                            .shadow(radius: 6).onReceive(timer) { _ in
-                                self.userData.currentBac -= 0.01
-                        }
+                            .shadow(radius: 6)
                         Spacer()
                         HStack {
                             Button(action: {
+                                self.stopWatchManager.start()
                                 self.openBarcodeView.toggle()}) {
                                 Image(systemName: "barcode.viewfinder")
                                     .imageScale(.large).foregroundColor(Color.white)
@@ -71,7 +69,7 @@ struct OverView: View {
 extension OverView {
     
     func decrementBac() {
-        self.userData.currentBac -= 0.01
+            self.userData.currentBac -= 0.01
     }
     
     

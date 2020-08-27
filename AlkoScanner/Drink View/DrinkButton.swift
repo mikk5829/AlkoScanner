@@ -10,11 +10,13 @@ import SwiftUI
 import HealthKit
 
 struct DrinkButton: View {
-    func addDrink() {
+    /// Calculated from https://www.sundhed.dk/borger/patienthaandbogen/psyke/sygdomme/alkohol/alkoholpromille-beregning/
+    func getBac() -> Float {
         let gramsOfAlcohol: Float = drink.gramsOfAlcohol()
         let weightInKilogram: Float = Float(userData.weightInKilograms)
         let biologicalSex = userData.biologicalSex
-        print(gramsOfAlcohol /  (weightInKilogram * (biologicalSex == HKBiologicalSex.male ? 0.7 : 0.6)))
+        let bac = gramsOfAlcohol /  (weightInKilogram * (biologicalSex == HKBiologicalSex.male ? 0.7 : 0.6))
+        return bac
     }
 
     var drink: Drink
@@ -24,7 +26,8 @@ struct DrinkButton: View {
         ZStack {
             Color(drink.color())
             Button(action: {
-                self.addDrink()
+                self.userData.currentDrinks.append(self.drink)
+                self.userData.currentBac += Double(self.getBac())
             }) {
             HStack {
                 VStack(alignment: .leading) {
