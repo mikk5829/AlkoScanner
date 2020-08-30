@@ -46,4 +46,21 @@ struct Drink: Hashable, Codable, Identifiable {
             return "Background"
         }
     }
+    
+    func getIcon() -> String {
+        switch category {
+        case .beer:
+            return "Glass"
+        case .drinks:
+            return "Matini"
+        case .wine:
+            return "Wine"
+        case .liquor:
+            return "Shot"
+        case .cider:
+            return "Can"
+        default:
+            return "Martini"
+        }
+    }
 }

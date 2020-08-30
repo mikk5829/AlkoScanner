@@ -35,6 +35,7 @@ struct DrinkDetail: View {
                 Text(drink.category.rawValue)
                     .font(.subheadline)
                 Spacer()
+                Image(drink.getIcon()).resizable().frame(width: 40.0, height: 70.0)
                 Text(drink.isFavorite.description)
                     .font(.subheadline)
             }
