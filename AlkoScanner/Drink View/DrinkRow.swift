@@ -22,12 +22,14 @@ struct DrinkRow: View {
                     .font(.footnote)
             }
             Spacer()
+            Image(drink.getIcon()).resizable().frame(width: 40.0, height: 60.0)
             
 //            if drink.isFavorite {
 //                Image(systemName: "star.fill")
 //                    .imageScale(.medium).foregroundColor(.yellow)
 //            }
         }
+        
     }
 }
 

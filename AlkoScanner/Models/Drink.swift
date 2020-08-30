@@ -24,4 +24,15 @@ struct Drink: Hashable, Codable, Identifiable {
         case cider = "Cider"
         case drinks = "Drinks"
     }
+    
+    func getIcon() -> String {
+        switch category {
+        case .beer:
+            return "Can"
+        case .drinks:
+            return "Matini"
+        default:
+            return "Martini"
+        }
+    }
 }
