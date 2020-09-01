@@ -13,13 +13,14 @@ struct AddDrink: View {
     
     var body: some View {
         VStack {
+            Spacer()
             HStack {
-                DrinkButton(drink: drinkData[0]).environmentObject(self.userData)
-                DrinkButton(drink: drinkData[0]).environmentObject(self.userData)
+                DrinkButton(drink: drinkData[0]).environmentObject(self.userData).padding()
+                DrinkButton(drink: drinkData[0]).environmentObject(self.userData).padding()
             }
             HStack {
-                DrinkButton(drink: drinkData[1]).environmentObject(self.userData)
-                DrinkButton(drink: drinkData[1]).environmentObject(self.userData)
+                DrinkButton(drink: drinkData[1]).environmentObject(self.userData).padding()
+                DrinkButton(drink: drinkData[1]).environmentObject(self.userData).padding()
             }
         }
     }
@@ -27,6 +28,7 @@ struct AddDrink: View {
 
 struct AddDrink_Previews: PreviewProvider {
     static var previews: some View {
-        AddDrink()
+        AddDrink().environmentObject(UserData())
+        
     }
 }

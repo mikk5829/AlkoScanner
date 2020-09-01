@@ -23,12 +23,10 @@ struct DrinkButton: View {
     @EnvironmentObject var userData: UserData
     
     var body: some View {
-        ZStack {
-            Color(drink.color())
             Button(action: {
                 self.userData.currentDrinks.append(self.drink)
                 self.userData.currentBac += Double(self.getBac())
-            }) {
+                }) {
             HStack {
                 VStack(alignment: .leading) {
                             Spacer()
@@ -39,13 +37,9 @@ struct DrinkButton: View {
                     .foregroundColor(Color.white)
                 }.padding()
                 Spacer()
-            }.overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color.white, lineWidth: 10)
-            )
-        }
-        }
-        
+                Image(drink.getIcon()).resizable().frame(width: 50.0, height: 70.0)
+            }
+        }.buttonStyle(DrinkPickerStyle(color: drink.color()))
     }
 }
 

@@ -16,6 +16,7 @@
 		1939CFF324F678A5000ADFB2 /* AddDrink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1939CFF224F678A4000ADFB2 /* AddDrink.swift */; };
 		1939CFF724F6F823000ADFB2 /* StopWatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1939CFF624F6F823000ADFB2 /* StopWatchManager.swift */; };
 		19B48C5E24FC16C600E34B4C /* Custom Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19B48C5D24FC16C600E34B4C /* Custom Icons.xcassets */; };
+		19B48C6024FC2A2900E34B4C /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B48C5F24FC2A2900E34B4C /* CustomButtons.swift */; };
 		19F9648824EB28A6002463C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F9648724EB28A6002463C0 /* AppDelegate.swift */; };
 		19F9648A24EB28A6002463C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F9648924EB28A6002463C0 /* SceneDelegate.swift */; };
 		19F9648E24EB28A8002463C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F9648D24EB28A8002463C0 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		1939CFF224F678A4000ADFB2 /* AddDrink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrink.swift; sourceTree = "<group>"; };
 		1939CFF624F6F823000ADFB2 /* StopWatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchManager.swift; sourceTree = "<group>"; };
 		19B48C5D24FC16C600E34B4C /* Custom Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Custom Icons.xcassets"; sourceTree = "<group>"; };
+		19B48C5F24FC2A2900E34B4C /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		19F9648424EB28A6002463C0 /* AlkoScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlkoScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F9648724EB28A6002463C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19F9648924EB28A6002463C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				19F964B024EC4A4D002463C0 /* ScanBarcode.swift */,
 				19F964B424EC6209002463C0 /* InfoBox.swift */,
 				1939CFF224F678A4000ADFB2 /* AddDrink.swift */,
+				19B48C5F24FC2A2900E34B4C /* CustomButtons.swift */,
 			);
 			path = "Supporting Views";
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				19F964B524EC6209002463C0 /* InfoBox.swift in Sources */,
 				1939CFE624F060F9000ADFB2 /* ProfileDataStore.swift in Sources */,
 				19F964A624EBC41E002463C0 /* Data.swift in Sources */,
+				19B48C6024FC2A2900E34B4C /* CustomButtons.swift in Sources */,
 				19F9648824EB28A6002463C0 /* AppDelegate.swift in Sources */,
 				19F964AF24EC4979002463C0 /* OverView.swift in Sources */,
 				19F964AD24EC254E002463C0 /* DrinkList.swift in Sources */,

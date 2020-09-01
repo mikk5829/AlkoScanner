@@ -32,14 +32,3 @@ struct ScanBarcode_Previews: PreviewProvider {
         ScanBarcode()
     }
 }
-
-struct GradientBackgroundStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .frame(minWidth: 0, maxWidth: 300, minHeight: 35)
-            .padding()
-            .background(Color.white)
-            .foregroundColor(Color("GreenDark"))
-            .cornerRadius(35)
-    }
-}
