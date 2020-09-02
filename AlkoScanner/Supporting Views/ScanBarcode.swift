@@ -7,13 +7,38 @@
 //
 
 import SwiftUI
+import CodeScanner
 
 struct ScanBarcode: View {
+    @State var isPresentingScanner = false
+    @State var scannedCode: String?
+
     var body: some View {
-        
-        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-            Text("Add drink")
-        }.buttonStyle(GradientBackgroundStyle())
+        NavigationView {
+            VStack(spacing: 10) {
+                Button("Scan Code") {
+                    self.isPresentingScanner = true
+                }
+                .sheet(isPresented: $isPresentingScanner) {
+                    self.scannerSheet
+                }
+                Text("Scan a QR code to begin")
+            }
+
+        }
+    }
+
+    var scannerSheet : some View {
+        CodeScannerView(
+            codeTypes: [.upce],
+            completion: { result in
+                if case let .success(code) = result {
+                    print(code)
+                    self.scannedCode = code
+                    self.isPresentingScanner = false
+                }
+            }
+        )
     }
 }
 
