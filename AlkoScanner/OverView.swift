@@ -25,7 +25,7 @@ struct OverView: View {
     
     var body: some View {
         Group {
-            if !isHealthAuthorized() {
+            if isHealthAuthorized() {
                 Onboarding().environmentObject(userData)
             } else {
                 NavigationView {
@@ -54,7 +54,7 @@ struct OverView: View {
                             }
                         }.padding()
                         }.navigationBarTitle(Text("Overview")).sheet(isPresented: $openBarcodeView) {
-                        ScanBarcode()
+                            ScanBarcode(showingSheet: self.$openBarcodeView)
                         }
                         
                     }

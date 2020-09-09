@@ -7,21 +7,33 @@
 //
 
 import SwiftUI
+import CodeScanner
 
 struct ScanBarcode: View {
+    @Binding var showingSheet:Bool
+    @State var scannedCode: String?
+
     var body: some View {
-        
-        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-            Text("Add drink")
-        }.buttonStyle(GradientBackgroundStyle())
+        NavigationView {
+            CodeScannerView(
+                codeTypes: [.ean13, .upce],
+                completion: { result in
+                    if case let .success(code) = result {
+                        print(code) // TODO Remove debug
+                        self.scannedCode = code
+                        self.showingSheet = false
+                    }
+                }
+            )
+        }
     }
 }
 
-struct ScanBarcode_Previews: PreviewProvider {
-    static var previews: some View {
-        ScanBarcode()
-    }
-}
+//struct ScanBarcode_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ScanBarcode(showingSheet: true)
+//    }
+//}
 
 struct GradientBackgroundStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
