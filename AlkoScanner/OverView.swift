@@ -54,7 +54,7 @@ struct OverView: View {
                             }
                         }.padding()
                         }.navigationBarTitle(Text("Overview")).sheet(isPresented: $openBarcodeView) {
-                        ScanBarcode()
+                            ScanBarcode(showingSheet: self.$openBarcodeView)
                         }
                         
                     }
