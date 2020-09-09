@@ -30,10 +30,10 @@ struct ScanBarcode: View {
 
     var scannerSheet : some View {
         CodeScannerView(
-            codeTypes: [.upce],
+            codeTypes: [.ean13, .upce],
             completion: { result in
                 if case let .success(code) = result {
-                    print(code)
+                    print(code) // TODO Remove debug
                     self.scannedCode = code
                     self.isPresentingScanner = false
                 }
