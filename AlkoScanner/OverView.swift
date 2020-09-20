@@ -29,7 +29,7 @@ struct OverView: View {
             } else {
                 NavigationView {
                     ZStack{
-                        LinearGradient(gradient: Gradient(colors: [Color("Green"), Color("GreenDark")]), startPoint: .top, endPoint: .bottom)
+                        LinearGradient(gradient: Gradient(colors: getColor()), startPoint: .top, endPoint: .bottom)
                             .edgesIgnoringSafeArea(.all)
                     VStack {
                         biologicalSexLabel
@@ -66,6 +66,12 @@ struct OverView: View {
 }
 
 extension OverView {
+    func getColor() -> [Color] {
+        if userData.currentBac == 0 { return [Color("Green"), Color("GreenDark")] }
+        else if userData.currentBac < 0.5 {return [Color("Yellow"), Color("YellowDark")]}
+        else {return [Color("Red"), Color("RedDark")]}
+    }
+    
     func isHealthAuthorized() -> Bool {
         return defaults.bool(forKey: "ShouldViewOnboarding")
     }
