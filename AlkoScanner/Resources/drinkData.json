@@ -1,17 +1,29 @@
 [
     {
-        "id": 1001,
+        "id": "1001",
         "name": "Tuborg",
         "category": "Beer",
-        "isFavorite": true,
+        "isFavorite": false,
+        "alcoholPercent": 4.5,
+        "contentInMl": 330.0,
         "originalBac": 0.15
     },
     {
-        "id": 1002,
+        "id": "5712872609377",
         "name": "Somersby",
         "category": "Cider",
         "isFavorite": false,
+        "alcoholPercent": 4.5,
+        "contentInMl": 330.0,
         "originalBac": 0.25
+    },
+    {
+        "id": "5701872203005",
+        "name": "Coca Cola",
+        "category": "Drinks",
+        "isFavorite": false,
+        "alcoholPercent": 0.0,
+        "contentInMl": 330.0,
+        "originalBac": 0.00
     }
 ]
-

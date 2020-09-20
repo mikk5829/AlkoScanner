@@ -10,6 +10,8 @@ import SwiftUI
 import CodeScanner
 
 struct ScanBarcode: View {
+    @EnvironmentObject var userData: UserData
+    
     @Binding var showingSheet:Bool
     @State var scannedCode: String?
 
@@ -19,7 +21,8 @@ struct ScanBarcode: View {
                 codeTypes: [.ean13, .upce],
                 completion: { result in
                     if case let .success(code) = result {
-                        print(code) // TODO Remove debug
+                        let first = userData.drinks.first {$0.id == code}
+                        print(first?.name) // TODO Remove debug
                         self.scannedCode = code
                         self.showingSheet = false
                     }

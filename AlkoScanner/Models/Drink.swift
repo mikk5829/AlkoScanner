@@ -9,10 +9,12 @@
 import Foundation
 
 struct Drink: Hashable, Codable, Identifiable {
-    var id: Int
+    var id: String
     var name: String
     var category: Category
     var isFavorite: Bool
+    var alcoholPercent: Float
+    var contentInMl: Float
     /// Used when deleting drink, subtract number from BAC
     var originalBac: Float
 //    var timeFinished: Date
