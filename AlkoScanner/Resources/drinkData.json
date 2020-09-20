@@ -5,8 +5,7 @@
         "category": "Beer",
         "isFavorite": false,
         "alcoholPercent": 4.6,
-        "contentInMl": 330.0,
-        "originalBac": 0.15
+        "contentInMl": 330.0
     },
     {
         "id": "5741000131077",
@@ -14,8 +13,7 @@
         "category": "Beer",
         "isFavorite": false,
         "alcoholPercent": 5.4,
-        "contentInMl": 330.0,
-        "originalBac": 0.15
+        "contentInMl": 330.0
     },
     {
         "id": "5712872609377",
@@ -23,8 +21,7 @@
         "category": "Cider",
         "isFavorite": false,
         "alcoholPercent": 4.5,
-        "contentInMl": 330.0,
-        "originalBac": 0.25
+        "contentInMl": 330.0
     },
     {
         "id": "5701872203005",
@@ -32,7 +29,6 @@
         "category": "Drinks",
         "isFavorite": false,
         "alcoholPercent": 0.0,
-        "contentInMl": 330.0,
-        "originalBac": 0.00
+        "contentInMl": 330.0
     }
 ]
