@@ -16,6 +16,7 @@ class UserData: ObservableObject {
     @Published var drinks = drinkData
     @Published var shouldViewOnboarding = true
     @Published var currentBac = 0.00
+    @Published var userHealthProfile = UserHealthProfile()
 }
 
 //func getBiologicalSex() throws -> (HKBiologicalSex) {

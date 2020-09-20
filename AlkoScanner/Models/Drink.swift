@@ -5,7 +5,7 @@
 //  Created by Mikkel Rosenfeldt Anderson on 17/08/2020.
 //  Copyright © 2020 Mikkel Rosenfeldt Anderson. All rights reserved.
 //
-
+import HealthKit
 import Foundation
 
 struct Drink: Hashable, Codable, Identifiable {
@@ -42,5 +42,15 @@ struct Drink: Hashable, Codable, Identifiable {
         default:
             return "Martini"
         }
+    }
+    
+    /// from https://en.wikipedia.org/wiki/Standard_drink#Calculation_of_pure_alcohol_mass_in_a_serving
+    func alcoholInGrams() -> Float {
+        return (contentInMl * (alcoholPercent/100) * 0.78924)
+    }
+    
+    func getBac(userHealthProfile:UserHealthProfile) -> Float {
+        userHealthProfile.biologicalSex == HKBiologicalSex.male ?
+            alcoholInGrams()/(Float(userHealthProfile.weightInKilograms!)*0.7) : alcoholInGrams()/(Float(userHealthProfile.weightInKilograms!)*0.6)
     }
 }

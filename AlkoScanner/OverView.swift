@@ -12,7 +12,6 @@ import HealthKit
 struct OverView: View {
     @EnvironmentObject var userData: UserData
     let defaults = UserDefaults.standard
-    let userHealthProfile = UserHealthProfile()
     
     @State var testAction = false
     @State var openBarcodeView = false
@@ -54,7 +53,7 @@ struct OverView: View {
                             }
                         }.padding()
                         }.navigationBarTitle(Text("Overview")).sheet(isPresented: $openBarcodeView) {
-                            ScanBarcode(showingSheet: self.$openBarcodeView)
+                            ScanBarcode(showingSheet: self.$openBarcodeView).environmentObject(userData)
                         }
                         
                     }
@@ -77,10 +76,10 @@ extension OverView {
     }
     
     func updateLabels() {
-        if let biologicalSex = userHealthProfile.biologicalSex {
+        if let biologicalSex = userData.userHealthProfile.biologicalSex {
             biologicalSexLabel = Text(biologicalSex.stringRepresentation)
         }
-        if let bodyMass = userHealthProfile.weightInKilograms {
+        if let bodyMass = userData.userHealthProfile.weightInKilograms {
             bodyMassText = Text(String(format: "%.2f", bodyMass))
         }
     }
@@ -88,7 +87,7 @@ extension OverView {
     private func updateBiologicalSex() {
         do {
             let userAgeSexAndBloodType = try ProfileDataStore.getbiologicalSex()
-            userHealthProfile.biologicalSex = userAgeSexAndBloodType
+            userData.userHealthProfile.biologicalSex = userAgeSexAndBloodType
             updateLabels()
         } catch let error {
             print(error)
@@ -112,7 +111,7 @@ extension OverView {
             }
             
             let weightInKilograms = sample.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
-            self.userHealthProfile.weightInKilograms = weightInKilograms
+            self.userData.userHealthProfile.weightInKilograms = weightInKilograms
             self.updateLabels()
         }
         

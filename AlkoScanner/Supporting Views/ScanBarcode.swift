@@ -16,19 +16,20 @@ struct ScanBarcode: View {
     @State var scannedCode: String?
 
     var body: some View {
-        NavigationView {
             CodeScannerView(
                 codeTypes: [.ean13, .upce],
                 completion: { result in
                     if case let .success(code) = result {
                         let first = userData.drinks.first {$0.id == code}
-                        print(first?.name) // TODO Remove debug
+                        print(first?.getBac(userHealthProfile: userData.userHealthProfile) as Any) // TODO Remove debug
+                        print(first?.alcoholInGrams() as Any) // TODO Remove debug
+                        print(first?.name as Any) // TODO Remove debug
+                        print(code)
                         self.scannedCode = code
                         self.showingSheet = false
                     }
                 }
-            )
-        }
+            ).edgesIgnoringSafeArea(.all)
     }
 }
 
