@@ -44,11 +44,12 @@ struct Drink: Hashable, Codable, Identifiable {
         }
     }
     
-    /// from https://en.wikipedia.org/wiki/Standard_drink#Calculation_of_pure_alcohol_mass_in_a_serving
+    /// From https://en.wikipedia.org/wiki/Standard_drink#Calculation_of_pure_alcohol_mass_in_a_serving
     func alcoholInGrams() -> Float {
         return (contentInMl * (alcoholPercent/100) * 0.78924)
     }
     
+    /// From https://www.sundhed.dk/borger/patienthaandbogen/psyke/sygdomme/alkohol/alkoholpromille-beregning/
     func getBac(userHealthProfile:UserHealthProfile) -> Float {
         userHealthProfile.biologicalSex == HKBiologicalSex.male ?
             alcoholInGrams()/(Float(userHealthProfile.weightInKilograms!)*0.7) : alcoholInGrams()/(Float(userHealthProfile.weightInKilograms!)*0.6)

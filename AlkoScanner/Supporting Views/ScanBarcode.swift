@@ -13,31 +13,46 @@ struct ScanBarcode: View {
     @EnvironmentObject var userData: UserData
     
     @Binding var showingSheet:Bool
-    @State var scannedCode: String?
-
+    
     var body: some View {
-            CodeScannerView(
-                codeTypes: [.ean13, .upce],
-                completion: { result in
-                    if case let .success(code) = result {
-                        let first = userData.drinks.first {$0.id == code}
-                        print(first?.getBac(userHealthProfile: userData.userHealthProfile) as Any) // TODO Remove debug
-                        print(first?.alcoholInGrams() as Any) // TODO Remove debug
-                        print(first?.name as Any) // TODO Remove debug
-                        print(code)
-                        self.scannedCode = code
-                        self.showingSheet = false
-                    }
+        ZStack {
+        CodeScannerView(
+            codeTypes: [.ean13, .upce],
+            completion: { result in
+                if case let .success(code) = result {
+                    let drink = userData.drinks.first {$0.id == code}
+//                    print(drink?.getBac(userHealthProfile: userData.userHealthProfile) as Any)
+//                    print(drink?.alcoholInGrams() as Any)
+//                    print(drink?.name as Any)
+//                    print(code)
+                    userData.currentBac += Double((drink?.getBac(userHealthProfile: userData.userHealthProfile))!)
+                    self.showingSheet = false
                 }
-            ).edgesIgnoringSafeArea(.all)
+            }
+        ).edgesIgnoringSafeArea(.all)
+            VStack {
+                Spacer()
+                Text("Scan a barcode")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(Color.white)
+                    .padding(.bottom)
+            }
+        }
     }
 }
 
-//struct ScanBarcode_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ScanBarcode(showingSheet: true)
-//    }
-//}
+struct ScanBarcode_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            Spacer()
+            Text("Scan a barcode")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(Color.black)
+        }
+    }
+}
 
 struct GradientBackgroundStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
