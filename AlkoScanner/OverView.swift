@@ -24,7 +24,7 @@ struct OverView: View {
     
     var body: some View {
         Group {
-            if isHealthAuthorized() {
+            if !isHealthAuthorized() {
                 Onboarding().environmentObject(userData)
             } else {
                 NavigationView {
