@@ -21,8 +21,15 @@ struct OverView: View {
     @State var bodyMassText:Text!
     
     
-    
     var body: some View {
+        let timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { timer in
+            if userData.currentBac < 0 {
+                userData.currentBac = 0
+            }
+            if userData.currentBac > 0 {
+                userData.currentBac -= 0.01
+            }
+        }
         Group {
             if !isHealthAuthorized() {
                 Onboarding().environmentObject(userData)
@@ -67,7 +74,7 @@ struct OverView: View {
 
 extension OverView {
     func getColor() -> [Color] {
-        if userData.currentBac == 0 { return [Color("Green"), Color("GreenDark")] }
+        if userData.currentBac <= 0 { return [Color("Green"), Color("GreenDark")] }
         else if userData.currentBac < 0.5 {return [Color("Yellow"), Color("YellowDark")]}
         else {return [Color("Red"), Color("RedDark")]}
     }
