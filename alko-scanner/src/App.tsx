@@ -8,9 +8,15 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import Login from './components/Pages/Login';
+import Login from './components/pages/Login';
 
 const theme = createTheme({
+    overrides: {
+        MuiTextField: {
+            root: {
+            }
+        },
+    },
     palette: {
         primary: {
             light: "#F36664",
@@ -34,10 +40,19 @@ const theme = createTheme({
         h1: {
             fontFamily: 'NTR'
         },
+        h2: {
+            fontFamily: 'NTR'
+        },
+        h3: {
+            fontFamily: 'NTR'
+        },
+        h4: {
+            fontFamily: 'NTR'
+        },
         button: {
             fontFamily: 'Montserrat',
             fontWeight: 'bold',
-            fontSize: '13px'
+            fontSize: '13px',
         }
     }
 });
@@ -50,8 +65,8 @@ function App() {
                     <Route path="/login">
                         <Login />
                     </Route>
-                    <Route path="/">
-                        <Login />
+                    <Route path="*">
+                        <Typography>Not Found</Typography>
                     </Route>
                 </Switch>
             </Router>
